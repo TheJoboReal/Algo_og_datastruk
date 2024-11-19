@@ -4,6 +4,7 @@
 #include <array>
 #include <cmath>
 #include <sstream>
+#include <bits/stdc++.h>
 
 // OPG 1
 
@@ -23,24 +24,20 @@ std::string wordFrequenzy(std::string sentence){
     std::vector<std::string> words;
     std::string word;
     std::string the_word;
-    std::string words_lower;
     std::string s = deletePunktuation(sentence);
+    std::transform(s.begin(), s.end(), s.begin(),::tolower);
     int count = 0;
     int current_count = 0;
 
 
-    for(int i = 0; i < s.size(); i++){
-        words_lower += std::tolower(s[i]);
-    }
-
-    std::stringstream ssword(words_lower);
+    std::stringstream ssword(s);
     while(ssword >> word){
         words.push_back(word);
     }
 
 
     for(int i=0; i < words.size(); i++){
-        current_count = -1;
+        current_count = 0;
         for(int j=0; j < words.size(); j++){
             if(words[j] == words[i]){
                 current_count ++;
@@ -55,5 +52,8 @@ std::string wordFrequenzy(std::string sentence){
 };
 
 int main(){
-    std::cout << wordFrequenzy("Hej med dig, jeg er sgu ret med. sej men med dig og") << std::endl;
+    std::cout << wordFrequenzy("Hej med dig, jeg er sgu hej hej hej ret med. sej men med dig og") << std::endl;
 }
+
+// Opg 2
+
