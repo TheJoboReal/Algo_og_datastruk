@@ -60,7 +60,7 @@ void TraverselPostOrder(Node* root){
     std::cout << root->_data << " ";
 }
 
-void levelOrderTraversal(Node* root) {
+void TraverselLevelOrder(Node* root) {
     if (!root) return;
     std::queue<Node*> q;
     q.push(root);
@@ -115,6 +115,7 @@ void printFormattedTree(Node* root) {
     fillTree(root, 0, 0, width - 1, output, width);
 
     // Print the formatted tree
+    std::cout << std::endl;
     for (const auto& line : output) {
         std::cout << line << std::endl;
     }
