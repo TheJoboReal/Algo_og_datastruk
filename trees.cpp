@@ -35,7 +35,7 @@ void TraverselPreOrder(Node* root){
     }
 
     //Print _data in node
-    std::cout << root->_data << " ";
+    std::cout << root -> _data << " ";
 
     // Go through left sub
     TraverselPreOrder(root -> left);
@@ -73,6 +73,33 @@ void TraverselLevelOrder(Node* root) {
     }
 }
 
+Node getOnlyChild(Node node){
+    if(node.left != nullptr){   // Check if left child exists and return it if it does
+        return *node.left;
+    }
+    return *node.right;     // Return right child if left child does not exist. And if right child does not exist the node will be a leaf node
+}
+
+ int getBranches(Node* root){
+    int branches = 0;
+    // Check if node is a leaf node
+    if(root == nullptr){
+        return 0;
+    }
+
+    if(root->left != nullptr && root->right != nullptr){
+        branches++;
+    }
+
+    // Go through left sub
+    branches += getBranches(root -> left);
+
+    // Go through right sub
+    branches += getBranches(root -> right);
+
+    return branches;
+
+ }
 
 // Helper function to calculate the height of the tree
 int treeHeight(Node* root) {
@@ -158,5 +185,8 @@ void perfectTree(int height, Node* root, int index = 1) {
 int main(){
     Node* root = new Node(1);
     perfectTree(3, root);
+    int branches = getBranches(root);
+    std::cout << "Branches: " << branches << std::endl;
+    std::cout << std::endl;
     printFormattedTree(root);
 }
