@@ -61,15 +61,15 @@ void TraverselPostOrder(Node* root){
 }
 
 void TraverselLevelOrder(Node* root) {
-    if (!root) return;
-    std::queue<Node*> q;
-    q.push(root);
-    while (!q.empty()) {
-        Node* curr = q.front();
-        q.pop();
-        std::cout << curr->_data << " ";
-        if (curr->left) q.push(curr->left);
-        if (curr->right) q.push(curr->right);
+    if (!root) return;      // Check if root is empty
+    std::queue<Node*> q;    // Initialize a queue to store the nodes
+    q.push(root);           // Push the root node into the queue
+    while (!q.empty()) {    // While the queue is not empty
+        Node* curr = q.front(); // Get the front node in the queue
+        q.pop();            // Pop the front node
+        std::cout << curr->_data << " ";    // Print the node value
+        if (curr->left) q.push(curr->left);     // Push the left child into the queue
+        if (curr->right) q.push(curr->right);   // Push the right child into the queue
     }
 }
 
@@ -87,7 +87,7 @@ Node getOnlyChild(Node node){
         return 0;
     }
 
-    if(root->left != nullptr && root->right != nullptr){
+    if(root->left != nullptr && root->right != nullptr){        // Check if node has two children
         branches++;
     }
 
@@ -183,10 +183,25 @@ void perfectTree(int height, Node* root, int index = 1) {
 
 
 int main(){
-    Node* root = new Node(1);
-    perfectTree(3, root);
-    int branches = getBranches(root);
-    std::cout << "Branches: " << branches << std::endl;
-    std::cout << std::endl;
-    printFormattedTree(root);
+    Node* root = new Node(25);
+    root->left = new Node(20);
+    root->left->left = new Node(10);
+    root->left->right = new Node(22);
+    root->left->left->left = new Node(5);
+    root->left->left->left->left = new Node(1);
+    root->left->left->left->right = new Node(8);
+    root->left->left->right = new Node(12);
+    root->left->left->right->right = new Node(15);
+
+    root->right = new Node(36);
+    root->right->left = new Node(30);
+    root->right->left->left = new Node(28);
+    root->right->right = new Node(40);
+    root->right->right->left = new Node(38);
+    root->right->right->right = new Node(48);
+    root->right->right->right->right = new Node(45);
+    root->right->right->right->right = new Node(50);
+
+    TraverselPreOrder(root);
+    // printFormattedTree(root);
 }
