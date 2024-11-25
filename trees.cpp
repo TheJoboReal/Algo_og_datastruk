@@ -181,6 +181,24 @@ void perfectTree(int height, Node* root, int index = 1) {
     perfectTree(height - 1, root->right, index + 2 + std::pow(2, height - 1));
 }
 
+bool isAVLtree(Node* root){
+    if(root == nullptr){        // Check if node is a leaf node
+        return true;
+    }
+
+    int leftHeight = treeHeight(root -> left);      // Get the height of the left child
+    int rightHeight = treeHeight(root -> right);    // Get the height of the right child
+
+    if(std::abs(leftHeight - rightHeight) > 1){     // Check if the difference in height is greater than 1
+        return false;
+    }
+
+    return isAVLtree(root -> left) && isAVLtree(root -> right);     // Recursively check the children
+}
+
+
+
+
 
 int main(){
     Node* root = new Node(25);
@@ -193,15 +211,29 @@ int main(){
     root->left->left->right = new Node(12);
     root->left->left->right->right = new Node(15);
 
-    root->right = new Node(36);
-    root->right->left = new Node(30);
-    root->right->left->left = new Node(28);
-    root->right->right = new Node(40);
-    root->right->right->left = new Node(38);
-    root->right->right->right = new Node(48);
-    root->right->right->right->right = new Node(45);
-    root->right->right->right->right = new Node(50);
+    // root->right = new Node(36);
+    // root->right->left = new Node(30);
+    // root->right->left->left = new Node(28);
+    // root->right->right = new Node(40);
+    // root->right->right->left = new Node(38);
+    // root->right->right->right = new Node(48);
+    // root->right->right->right->right = new Node(45);
+    // root->right->right->right->right = new Node(50);
 
-    TraverselPreOrder(root);
+    // Node* root = new Node(11);
+    // root->left = new Node(2);
+    // root->left->left = new Node(1);
+    // root->left->right = new Node(9);
+    // root->left->left = new Node(1);
+    // root->right = new Node(13);
+    // root->right->right = new Node(57);
+    // root->right->right->left = new Node(25);
+    // root->right->right->left->left = new Node(17);
+    // root->right->right->right = new Node(90);
+
+    // TraverselPreOrder(root);
+    std::cout << isAVLtree(root) << std::endl;
+    std::cout << internalPathLength(root) << std::endl;
+    std::cout << "Branches: " << getBranches(root) << std::endl;
     // printFormattedTree(root);
 }
