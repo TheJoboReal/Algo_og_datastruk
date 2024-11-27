@@ -73,11 +73,14 @@ void TraverselLevelOrder(Node* root) {
     }
 }
 
-Node getOnlyChild(Node node){
-    if(node.left != nullptr){   // Check if left child exists and return it if it does
-        return *node.left;
+Node* getOnlyChild(Node* node){
+    if(node->left != nullptr && node->right == nullptr){   // Check if only left child exists
+        return node->left;
     }
-    return *node.right;     // Return right child if left child does not exist. And if right child does not exist the node will be a leaf node
+    if(node->right != nullptr && node->left == nullptr){   // Check if only right child exists
+        return node->right;
+    }
+    return nullptr;     // Return nullptr if both children exist or both are nullptr
 }
 
  int getBranches(Node* root){
@@ -101,11 +104,21 @@ Node getOnlyChild(Node node){
 
  }
 
-// Helper function to calculate the height of the tree
+
+// Find height of a tree, defined by the root node
 int treeHeight(Node* root) {
-    if (!root) return 0;
-    return std::max(treeHeight(root->left), treeHeight(root->right)) + 1;
+    if (root == NULL) {
+        return 0;
+    }
+
+    // Find the height of left, right subtrees
+    int left_height = treeHeight(root->left);
+    int right_height = treeHeight(root->right);
+        
+    // Find max(subtree_height) + 1 to get the height of the tree
+    return std::max(left_height, right_height) + 1;
 }
+
 
 // Function to fill the tree's structure into a vector of strings
 void fillTree(Node* root, int level, int left, int right, std::vector<std::string>& output, int width) {
@@ -182,18 +195,14 @@ void perfectTree(int height, Node* root, int index = 1) {
 }
 
 bool isAVLtree(Node* root){
-    if(root == nullptr){        // Check if node is a leaf node
-        return true;
-    }
+    int leftHeight = treeHeight(root -> left);
+    int rightHeight = treeHeight(root -> right);
 
-    int leftHeight = treeHeight(root -> left);      // Get the height of the left child
-    int rightHeight = treeHeight(root -> right);    // Get the height of the right child
-
-    if(std::abs(leftHeight - rightHeight) > 1){     // Check if the difference in height is greater than 1
+    if(leftHeight - rightHeight > 1){
         return false;
     }
 
-    return isAVLtree(root -> left) && isAVLtree(root -> right);     // Recursively check the children
+    return true;
 }
 
 
@@ -247,10 +256,22 @@ int main(){
     root->right->right->left->left = new Node(57);
     root->right->right->right = new Node(60);
 
+    std::cout << std::endl;
+    std::cout << "Pre Order Traversal" << std::endl;
+    TraverselPreOrder(root);
+    std::cout << std::endl;
+    std::cout << std::endl;
 
-    // TraverselPreOrder(root);
-    std::cout << isAVLtree(root) << std::endl;
-    // std::cout << internalPathLength(root) << std::endl;
-    std::cout << "Branches: " << getBranches(root) << std::endl;
+    std::cout << "In Order Traversal" << std::endl;
+    TraverselInOrder(root);
+    std::cout << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Is AVL tree: " << isAVLtree(root) << std::endl;
+    std::cout << std::endl;
+
+
+    // std::cout << "Branches: " << getBranches(root) << std::endl;
     // printFormattedTree(root);
+    // std::cout << treeHeight(root -> right) << std::endl;
 }
