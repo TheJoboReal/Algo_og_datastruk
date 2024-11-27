@@ -201,15 +201,15 @@ bool isAVLtree(Node* root){
 
 
 int main(){
-    Node* root = new Node(25);
-    root->left = new Node(20);
-    root->left->left = new Node(10);
-    root->left->right = new Node(22);
-    root->left->left->left = new Node(5);
-    root->left->left->left->left = new Node(1);
-    root->left->left->left->right = new Node(8);
-    root->left->left->right = new Node(12);
-    root->left->left->right->right = new Node(15);
+    // Node* root = new Node(25);
+    // root->left = new Node(20);
+    // root->left->left = new Node(10);
+    // root->left->right = new Node(22);
+    // root->left->left->left = new Node(5);
+    // root->left->left->left->left = new Node(1);
+    // root->left->left->left->right = new Node(8);
+    // root->left->left->right = new Node(12);
+    // root->left->left->right->right = new Node(15);
 
     // root->right = new Node(36);
     // root->right->left = new Node(30);
@@ -231,9 +231,26 @@ int main(){
     // root->right->right->left->left = new Node(17);
     // root->right->right->right = new Node(90);
 
+    Node* root = new Node(11);
+    root->left = new Node(4);
+    root->left->left = new Node(3);
+    root->left->left->left = new Node(2);
+    root->left->left->left->left = new Node(1);
+    root->right = new Node(28);
+    root->right->right = new Node(55);
+    root->right->left = new Node(51);
+    root->right->left->left = new Node(48);
+    root->right->left->left->left = new Node(40);
+    root->right->left->left->left->left = new Node(35);
+    root->right->right = new Node(60);
+    root->right->right->left = new Node(58);
+    root->right->right->left->left = new Node(57);
+    root->right->right->right = new Node(60);
+
+
     // TraverselPreOrder(root);
     std::cout << isAVLtree(root) << std::endl;
-    std::cout << internalPathLength(root) << std::endl;
+    // std::cout << internalPathLength(root) << std::endl;
     std::cout << "Branches: " << getBranches(root) << std::endl;
     // printFormattedTree(root);
 }
