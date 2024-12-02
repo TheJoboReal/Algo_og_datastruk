@@ -4,56 +4,51 @@
 #include <array>
 #include <cmath>
 #include <sstream>
-#include <bits/stdc++.h>
 
 // OPG 1
 
-std::string deletePunktuation(std::string s, int index = 0){
-    if(index == s.size()){      // Base case
-        return "";        // Return empty string
+std::string deletePunktuation(std::string s){
+    std::string newString;
+    for(int i = 0; i < s.size(); i++){
+        if(std::isalpha(s[i]) || std::isspace(s[i])){
+            newString += s[i];
+        }
     }
-    char currentChar = s[index];    // Get current character
-    if(std::isalpha(currentChar) || std::isspace(currentChar)){     // If current character is a letter
-        return currentChar + deletePunktuation(s, index + 1);       // Return current character and call function again
-    } else {
-        return deletePunktuation(s, index + 1);
-    }
-}
+    return newString;
+};
+
 
 std::string wordFrequenzy(std::string sentence){
     std::vector<std::string> words;
+    std::vector<std::tuple<std::string, int>> wordcount;
     std::string word;
-    std::string the_word;
+    std::string words_lower;
     std::string s = deletePunktuation(sentence);
-    std::transform(s.begin(), s.end(), s.begin(),::tolower);
-    int count = 0;
-    int current_count = 0;
 
 
-    std::stringstream ssword(s);
+    for(int i = 0; i < sentence.size(); i++){
+        words_lower += std::tolower(sentence[i]);
+    }
+
+    std::stringstream ssword(words_lower);
     while(ssword >> word){
         words.push_back(word);
     }
 
-
     for(int i=0; i < words.size(); i++){
-        current_count = 0;
+        int count = 0;
         for(int j=0; j < words.size(); j++){
-            if(words[j] == words[i]){
-                current_count ++;
+            if(words[i] == words[j]){
+                count++;
             }
-        }
-        if(current_count > count){
-            count = current_count;
-            the_word = words[i];
+            wordcount.emplace_back(words[i], count);
         }
     }
-    return the_word;
+
+    return words[1];
+
 };
 
 int main(){
-    std::cout << wordFrequenzy("Hej med dig, jeg er sgu hej hej hej ret med. sej men med dig og") << std::endl;
+    wordFrequenzy("Hej med dig, jeg er sgu ret sej men med dig og.");
 }
-
-// Opg 2
-

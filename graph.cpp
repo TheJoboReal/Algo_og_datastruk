@@ -116,35 +116,38 @@ class AdjacencyList{
 };
 
 int main(){
-    AdjacencyMatrix g(5);
-    g.addEdge(0, 1);
-    g.addEdge(0, 2);
-    g.addEdge(1, 3);
-    g.addEdge(1, 4);
-    g.addEdge(2, 5);
-    g.addNode(Node('A'));
-    g.addNode(Node('B'));
-    g.addNode(Node('C'));
-    g.addNode(Node('D'));
-    g.addNode(Node('E'));
-    std::cout << g.checkEdge(3, 1) << std::endl;
+    // AdjacencyMatrix g(5);
+    // g.addEdge(0, 1);
+    // g.addEdge(0, 2);
+    // g.addEdge(1, 3);
+    // g.addEdge(1, 4);
+    // g.addEdge(2, 5);
+    // g.addNode(Node('A'));
+    // g.addNode(Node('B'));
+    // g.addNode(Node('C'));
+    // g.addNode(Node('D'));
+    // g.addNode(Node('E'));
+    // std::cout << g.checkEdge(3, 1) << std::endl;
  
-    g.print();
+    // g.print();
     
-    // AdjacencyList l;
-    // l.addNode(Node('A'));
-    // l.addNode(Node('B'));
-    // l.addNode(Node('C'));
-    // l.addNode(Node('D'));
-    // l.addNode(Node('E'));
-    // l.addEdge(0, 1);
-    // l.addEdge(0, 2);
-    // l.addEdge(1, 3);
-    // l.addEdge(1, 4);
-    // l.addEdge(0, 4);
-    // l.addEdge(4, 1);
-    // std::cout << l.checkEdge(3, 1) << std::endl;
-    // l.print();
+    AdjacencyList l;
+    l.addNode(Node('A'));
+    l.addNode(Node('B'));
+    l.addNode(Node('C'));
+    l.addNode(Node('D'));
+    l.addNode(Node('E'));
+    l.addEdge(0, 1);
+    l.addEdge(0, 2);
+    l.addEdge(1, 3);
+    l.addEdge(1, 4);
+    l.addEdge(0, 4);
+    l.addEdge(4, 1);
+    std::cout << l.checkEdge(3, 1) << std::endl;
+    l.print();
+
 
     return 0;
+
+
 }
