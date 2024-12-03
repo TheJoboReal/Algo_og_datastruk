@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <array>
 
 // Opgave 2
 
@@ -17,7 +18,10 @@ int sumDeleligMedTreOgOtte(int N){
     return sum + sumDeleligMedTreOgOtte(N - 1);
 }
 
-// 
+bool sumAfToLigParameter(int arraylength, int l, int X){
+    std::array<int, 100> arr = {0};
+
+}
 
 
 int main(){
