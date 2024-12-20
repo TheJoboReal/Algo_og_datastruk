@@ -73,33 +73,35 @@ void TraverselLevelOrder(Node* root) {
     }
 }
 
-Node getOnlyChild(Node node){
-    if(node.left != nullptr){   // Check if left child exists and return it if it does
-        return *node.left;
+Node* getOnlyChild(Node* node){
+    if(node->left != nullptr){   // Check if left child exists and return it if it does
+        return node->left;
     }
-    return *node.right;     // Return right child if left child does not exist. And if right child does not exist the node will be a leaf node
+    if(node->right != nullptr){   // Check if right child exists and return it if it does
+        return node->right;
+    }
+    return nullptr;    // Return null if there are two or 0 children
 }
 
- int getBranches(Node* root){
-    int branches = 0;
-    // Check if node is a leaf node
+
+int getBranches(Node* root){
+    // We must check if a node has:
+    // Only one child, no siblings, nodes child has no siblings nad nodes child only have one child
     if(root == nullptr){
         return 0;
     }
+    int branches = 0;
 
-    if(root->left != nullptr && root->right != nullptr){        // Check if node has two children
-        branches++;
+    // Check if node has only one child
+    if(getOnlyChild(root) != nullptr){
+        if(getOnlyChild(root->left) == nullptr || getOnlyChild(root->right) == nullptr){
+            branches++;
+        }
     }
 
-    // Go through left sub
-    branches += getBranches(root -> left);
-
-    // Go through right sub
-    branches += getBranches(root -> right);
-
-    return branches;
-
- }
+    return getBranches(root->left) + branches;
+    return getBranches(root->right) + branches;
+}
 
 // Helper function to calculate the height of the tree
 int treeHeight(Node* root) {
@@ -183,25 +185,22 @@ void perfectTree(int height, Node* root, int index = 1) {
 
 
 int main(){
-    Node* root = new Node(25);
-    root->left = new Node(20);
-    root->left->left = new Node(10);
-    root->left->right = new Node(22);
-    root->left->left->left = new Node(5);
-    root->left->left->left->left = new Node(1);
-    root->left->left->left->right = new Node(8);
-    root->left->left->right = new Node(12);
-    root->left->left->right->right = new Node(15);
+    Node* root = new Node(7);
+    root->left = new Node(4);
+    root->left->left = new Node(3);
+    root->left->right = new Node(2);
+    root->left->left->left = new Node(1);
+    root->right = new Node(28);
+    root->right->right = new Node(55);
+    root->right->right->left = new Node(51);
+    root->right->right->left->left = new Node(48);
+    root->right->right->left->left->left = new Node(40);
+    root->right->right->left->left->left->left = new Node(35);
+    root->right->right->right = new Node(60);
+    root->right->right->left = new Node(58);
+    root->right->right->left->left = new Node(57);
+    root->right->right->right->right = new Node(69);
 
-    root->right = new Node(36);
-    root->right->left = new Node(30);
-    root->right->left->left = new Node(28);
-    root->right->right = new Node(40);
-    root->right->right->left = new Node(38);
-    root->right->right->right = new Node(48);
-    root->right->right->right->right = new Node(45);
-    root->right->right->right->right = new Node(50);
+    std::cout << getBranches(root) << std::endl;
 
-    TraverselPreOrder(root);
-    // printFormattedTree(root);
 }
