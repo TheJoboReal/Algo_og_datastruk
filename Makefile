@@ -18,6 +18,3 @@ graph:
 
 link:
 	g++ linkeList.cpp && ./a.out
-
-hashhop:
-	g++ hash_hop.cpp && ./a.out
