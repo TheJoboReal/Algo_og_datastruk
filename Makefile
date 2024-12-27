@@ -18,3 +18,6 @@ graph:
 
 link:
 	g++ linkeList.cpp && ./a.out
+	
+sort:
+	g++ sorting.cpp && ./a.out
