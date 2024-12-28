@@ -14,6 +14,7 @@ void printArray(int* arr, int l){
 
 //-------------------------------------------------------------------------------------------------------------------------------------------//
 
+// Minsortering, som også fungere som bucketsort
 void minSortering(int* arr){
     // Using bucket sort
     int bucket[100] = {0};  
@@ -78,6 +79,7 @@ void merge(int* arr, int* left, int* right, int leftSize, int rightSize) {
         arr[k++] = left[i++];
     }
     while (j < rightSize) {         // If there are any elements left in the right array add them to the array
+       
         arr[k++] = right[j++];
     }
 }

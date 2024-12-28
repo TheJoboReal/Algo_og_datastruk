@@ -21,3 +21,6 @@ link:
 	
 sort:
 	g++ sorting.cpp && ./a.out
+
+eksamen:
+	g++ eksamen.cpp && ./a.out
