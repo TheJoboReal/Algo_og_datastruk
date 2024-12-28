@@ -2,6 +2,8 @@
 #include <vector>
 #include <array>
 
+//-------------------------------------------------------------------------------------------------------------------------------------------//
+
 // Opgave 2
 
 int sumDeleligMedTreOgOtte(int N){
@@ -18,6 +20,7 @@ int sumDeleligMedTreOgOtte(int N){
     return sum + sumDeleligMedTreOgOtte(N - 1);
 }
 
+//-------------------------------------------------------------------------------------------------------------------------------------------//
 
 // Opgave 1 i reeksamen
 bool sumAfToLigParameter(int* arr, int l, int X){
@@ -34,6 +37,9 @@ bool sumAfToLigParameter(int* arr, int l, int X){
     }
     return false;
 }
+
+//-------------------------------------------------------------------------------------------------------------------------------------------//
+
 
 bool isVokal(char k){
     if(k == 'a'| k == 'e'| k == 'i'| k == 'o'| k == 'u'| k == 'y'){
@@ -56,6 +62,8 @@ int antalVokaler(std::string str, int l){
     return vokaler + antalVokaler(str, l - 1);
 }
 
+//-------------------------------------------------------------------------------------------------------------------------------------------//
+
 // Opgave 4 i reeksamen
 void minSortering(int* arr){
     // Using bucket sort
@@ -71,6 +79,8 @@ void minSortering(int* arr){
         }
     }
 }
+
+//-------------------------------------------------------------------------------------------------------------------------------------------//
 
 
 int main(){

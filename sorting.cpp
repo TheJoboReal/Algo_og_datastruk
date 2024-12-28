@@ -67,17 +67,17 @@ void bubblesort(int* arr, int l){
 // Merge function to merge two halves
 void merge(int* arr, int* left, int* right, int leftSize, int rightSize) {
     int i = 0, j = 0, k = 0;
-    while (i < leftSize && j < rightSize) {
+    while (i < leftSize && j < rightSize) {     // Loop through the left and right array and merge them
         if (left[i] <= right[j]) {
             arr[k++] = left[i++];
         } else {
             arr[k++] = right[j++];
         }
     }
-    while (i < leftSize) {
+    while (i < leftSize) {          // If there are any elements left in the left array add them to the array
         arr[k++] = left[i++];
     }
-    while (j < rightSize) {
+    while (j < rightSize) {         // If there are any elements left in the right array add them to the array
         arr[k++] = right[j++];
     }
 }
@@ -162,10 +162,10 @@ void heapSort(int* arr, int n){
 
 // Insertionsort
 void insertionSort(int* arr, int left, int right){
-    for(int i = left + 1; i <= right; i++){
+    for(int i = left + 1; i <= right; i++){         // Loop through the array starting from the second element
         int temp = arr[i];
         int j = i - 1;
-        while(j >= left && arr[j] > temp){
+        while(j >= left && arr[j] > temp){          // Loop through the array and swap the elements if they are greater than the temp variable
             arr[j + 1] = arr[j];
             j--;
         }
@@ -174,30 +174,33 @@ void insertionSort(int* arr, int left, int right){
 }
 
 
-
 //-------------------------------------------------------------------------------------------------------------------------------------------//
 
-// void quickSort(int* arr, int left, int right){
-//     if(left + CUTOFF < right){
-//         int pivot = std::median3(arr, left, right);
-//         int i = left, j = right - 1;
-//         for(;;){
-//             while(arr[i] < pivot){i++};
-//             while(arr[i] > pivot){j--};
-//             if(i < j){
-//                 std::swap(arr, i, j);
-//             }
-//             else{break};
-//         }
-//         std::swap(arr, i, right - 1);
+// Quick sorting
 
-//         quickSort(arr, left, i - 1);
-//         quickSort(arr, i + 1, right);
-//     }
-//     else{
-//         insertionSort(arr, left, right);
-//     }
-// }
+int partition(int* arr, int l, int r){
+    int pivot = arr[r];     // Set the pivot to the last element
+    int i = l - 1;
+
+    for(int j = l; j < r; j++){     // Loop through the array and swap the elements if they are less than the pivot
+        if(arr[j] < pivot){
+            i++;
+            std::swap(arr[i], arr[j]);
+        }
+    }
+    std::swap(arr[i + 1], arr[r]);      // Swap the pivot with the element at the index i + 1 (the element that is greater than the pivot)
+    return i + 1;
+}
+
+
+void quickSort(int* arr, int l, int r){
+    if(l < r){
+        int pi = partition(arr, l, r);      // Partition the array into two halves
+        quickSort(arr, l, pi - 1);      // Recursively call quickSort on the left side
+        quickSort(arr, pi + 1, r);      // Recursively call quickSort on the right side
+    }
+}
+
 
 //-------------------------------------------------------------------------------------------------------------------------------------------//
 
@@ -215,6 +218,7 @@ int main(){
     // mergeSort(arr, 6);
     // heapSort(arr, 6);
     insertionSort(arr, 0, 5);
+    // quickSort(arr, 0, 5);
 
 
 
