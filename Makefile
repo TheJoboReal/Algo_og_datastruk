@@ -24,3 +24,6 @@ sort:
 
 eksamen:
 	g++ eksamen.cpp && ./a.out
+
+prio:
+	g++ priorityqueues.cpp && ./a.out
