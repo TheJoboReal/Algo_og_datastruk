@@ -218,8 +218,8 @@ int main(){
 
     // bubblesort(arr, 6);
     // mergeSort(arr, 6);
-    // heapSort(arr, 6);
-    insertionSort(arr, 0, 5);
+    heapSort(arr, 6);
+    // insertionSort(arr, 0, 5);
     // quickSort(arr, 0, 5);
 
 

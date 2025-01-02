@@ -154,7 +154,6 @@ void perfectTree(int height, Node* root, int index = 1) {
 }
 
 
-
 int main(){
     Node* root = new Node(1);
     perfectTree(3, root);
