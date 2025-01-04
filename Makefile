@@ -1,5 +1,8 @@
 tree:
 	g++ trees.cpp && ./a.out
+	
+bin:
+	g++ binary_traversal.cpp && ./a.out
 
 hash:
 	g++ hash.cpp && ./a.out
@@ -24,3 +27,6 @@ sort:
 
 eksamen:
 	g++ eksamen.cpp && ./a.out
+
+aktivitet:
+	g++ Aktivitet.cpp && ./a.out

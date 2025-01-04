@@ -106,23 +106,15 @@ public:
 };
 
 int main(){
-    Hashtable h(11);
+    Hashtable h(13);
     h.print();
-    h.place('V', 2);
+    h.place('X', 3);
     h.print();
-    h.place('R', 3);
+    h.hashQuadPlace('1', 3);
     h.print();
-    h.place('P', 6);
+    h.hashQuadPlace('2', 3);
     h.print();
-    h.place('E', 8);
-    h.print();
-    h.place('F', 10);
-    h.print();
-    h.hashQuadPlace('Q', 7);
-    h.print();
-    h.hashQuadPlace('C', 8);
-    h.print();
-    h.hashQuadPlace('H', 2);
+    h.hashQuadPlace('3', 3);
     h.print();
 
     return 0;

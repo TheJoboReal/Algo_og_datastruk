@@ -183,25 +183,17 @@ void perfectTree(int height, Node* root, int index = 1) {
 
 
 int main(){
-    Node* root = new Node(25);
-    root->left = new Node(20);
+    Node* root = new Node(45);
+    root->left = new Node(15);
     root->left->left = new Node(10);
-    root->left->right = new Node(22);
-    root->left->left->left = new Node(5);
-    root->left->left->left->left = new Node(1);
-    root->left->left->left->right = new Node(8);
     root->left->left->right = new Node(12);
-    root->left->left->right->right = new Node(15);
+    root->left->right = new Node(20);
+    root->right = new Node(79);
+    root->right->left = new Node(55);
+    root->right->left->left = new Node(50);
+    root->right->right = new Node(90);
 
-    root->right = new Node(36);
-    root->right->left = new Node(30);
-    root->right->left->left = new Node(28);
-    root->right->right = new Node(40);
-    root->right->right->left = new Node(38);
-    root->right->right->right = new Node(48);
-    root->right->right->right->right = new Node(45);
-    root->right->right->right->right = new Node(50);
 
-    TraverselPreOrder(root);
-    // printFormattedTree(root);
+    printFormattedTree(root);
+    TraverselLevelOrder(root);
 }

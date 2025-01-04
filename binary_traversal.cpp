@@ -155,7 +155,15 @@ void perfectTree(int height, Node* root, int index = 1) {
 
 
 int main(){
-    Node* root = new Node(1);
-    perfectTree(3, root);
+    Node* root = new Node(45);
+    root->left = new Node(15);
+    root->left->left = new Node(10);
+    root->left->left->right = new Node(12);
+    root->left->right = new Node(20);
+    root->right = new Node(79);
+    root->right->left = new Node(55);
+    root->right->left->left = new Node(50);
+    root->right->right = new Node(90);
+
     printFormattedTree(root);
 }
